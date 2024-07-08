@@ -73,7 +73,8 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
         </div>
       </div>
       <p className="my-4 font-satoshi text-sm text-gray-700">{post.prompt}</p>
-      <p className="font-inter text-sm blue_gradient cursor-pointer">
+
+      <p className="font-inter text-sm text-blue-500 cursor-pointer flex w-full flex-wrap">
         {post.tag.split(" ").map((tag, index) => (
           <span
             className="mx-1"
@@ -84,6 +85,34 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
           </span>
         ))}
       </p>
+      {isUserAndProfilePage && (
+        <>
+          <div className="flex justify-end">
+            <span
+              className={`text-sm 
+            ${post.isPublic ? "text-green-600" : "text-gray-600"} 
+          `}
+            >
+              {post.isPublic ? "Public" : "Private"}
+            </span>
+          </div>
+
+          <div className="mt-5 flex-center gap-4 border-t border-gray-200 pt-3">
+            <p
+              className="font-inter text-sm green_gradient cursor-pointer"
+              onClick={handleEdit}
+            >
+              Edit
+            </p>
+            <p
+              className="font-inter text-sm orange_gradient cursor-pointer"
+              onClick={handleDelete}
+            >
+              Delete
+            </p>
+          </div>
+        </>
+      )}
     </div>
   );
 };

@@ -29,14 +29,12 @@ const Feed = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const res = await fetch("/api/prompt");
-        const data = await res.json();
+      const res = await fetch("/api/prompt");
+      let data = await res.json();
 
-        setAllPosts(data);
-      } catch (error) {
-        console.log(error);
-      }
+      data = data.filter((post) => post.isPublic);
+
+      setAllPosts(data);
     };
 
     fetchData();
