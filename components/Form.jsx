@@ -47,16 +47,16 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
 
         <div className="flex items-center justify-start gap-2">
           <span className="text-gray-700">Public</span>
-          <label class="relative inline-flex cursor-pointer items-center">
+          <label className="relative inline-flex cursor-pointer items-center">
             <input
               id="switch-2"
               type="checkbox"
-              class="peer sr-only"
+              className="peer sr-only"
               checked={post.isPublic}
               onChange={(e) => setPost({ ...post, isPublic: !post.isPublic })}
             />
-            <label for="switch-2" class="hidden"></label>
-            <div class="peer h-4 w-11 rounded-full border bg-slate-200 after:absolute after:-top-1 after:left-0 after:h-6 after:w-6 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-green-300 peer-checked:after:translate-x-full peer-focus:ring-green-300"></div>
+            <label htmlFor="switch-2" className="hidden"></label>
+            <div className="peer h-4 w-11 rounded-full border bg-slate-200 after:absolute after:-top-1 after:left-0 after:h-6 after:w-6 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-green-300 peer-checked:after:translate-x-full peer-focus:ring-green-300"></div>
           </label>
         </div>
         <div>
