@@ -29,7 +29,12 @@ const Feed = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("/api/prompt");
+      const res = await fetch("/api/prompt", {
+        headers: {
+          "Cache-Control": "no-cache",
+        },
+      });
+
       let data = await res.json();
 
       data = data.filter((post) => post.isPublic);

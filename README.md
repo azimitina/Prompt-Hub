@@ -4,6 +4,8 @@
 
 Prompt Hub is an open-source AI prompting tool for the modern world to discover, create, and share creative prompts.
 
+## View the live version of the project hosted on Vercel [Prompt Hub AI](https://prompt-hub-ai.vercel.app/) 🚀
+
 ## Tech Stack
 
 - Next.js
