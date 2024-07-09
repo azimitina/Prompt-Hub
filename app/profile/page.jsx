@@ -1,6 +1,5 @@
 "use client";
 
-import { Suspense } from "react";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -51,6 +50,15 @@ const UserProfile = () => {
 
   return status === "loading" ? (
     <div>Loading...</div>
+  ) : userPosts.length === 0 ? (
+    <div className=" p-4 rounded mt-20 glassmorphism">
+      <p className="text-gray-700 text-lg">
+        No posts yet.{" "}
+        <a href="/create-prompt" className="text-blue-500 hover:underline">
+          Create your very first prompt
+        </a>
+      </p>
+    </div>
   ) : (
     <Profile
       name="My"

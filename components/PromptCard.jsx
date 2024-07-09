@@ -3,19 +3,13 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
-import { usePathname } from "next/navigation";
-
-// Manipulate username
-const manipulateUsername = (username) => {
-  if (username.length <= 2) {
-    return username;
-  }
-  return `${username[0]} ... ${username[username.length - 1]}`;
-};
+import { usePathname, useRouter } from "next/navigation";
+import { manipulateUsername } from "@utils/utils";
 
 const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
   const { data: session } = useSession();
   const pathName = usePathname();
+  const router = useRouter();
 
   const [copied, setCopied] = useState("");
 
@@ -23,7 +17,13 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
     session?.user.id === post.creator._id && pathName === "/profile";
 
   const handleProfileClick = () => {
-    console.log(post);
+    if (post.creator._id === session?.user.id) return router.push("/profile");
+
+    router.push(
+      `/profile/${post.creator._id}?name=${manipulateUsername(
+        post.creator.username
+      )}`
+    );
   };
 
   const handleCopy = () => {
