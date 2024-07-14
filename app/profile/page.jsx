@@ -50,7 +50,15 @@ const UserProfile = () => {
 
   return status === "loading" ? (
     <div>Loading...</div>
-  ) : userPosts.length === 0 ? (
+  ) : userPosts.length !== 0 ? (
+    <Profile
+      name="My"
+      desc="Welcome to your custom profile page. Showcase your unique prompts and inspire others with your creativity."
+      data={userPosts}
+      handleEdit={handleEdit}
+      handleDelete={handleDelete}
+    />
+  ) : (
     <div className=" p-4 rounded mt-20 glassmorphism">
       <p className="text-gray-700 text-lg">
         No posts yet.{" "}
@@ -59,14 +67,6 @@ const UserProfile = () => {
         </a>
       </p>
     </div>
-  ) : (
-    <Profile
-      name="My"
-      desc="Welcome to your custom profile page. Showcase your unique prompts and inspire others with your creativity."
-      data={userPosts}
-      handleEdit={handleEdit}
-      handleDelete={handleDelete}
-    />
   );
 };
 

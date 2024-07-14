@@ -56,11 +56,7 @@ const Feed = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("/api/prompt", {
-        headers: {
-          "Cache-Control": "no-cache",
-        },
-      });
+      const res = await fetch("/api/prompt", { cache: "no-store" });
 
       let data = await res.json();
 
